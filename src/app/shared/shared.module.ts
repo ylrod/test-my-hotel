@@ -1,6 +1,7 @@
 import { ModuleWithProviders, NgModule } from '@angular/core';
 import { CommonModule, DatePipe } from '@angular/common';
 import { HeaderComponent } from './components/header/header.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 
 @NgModule({
@@ -9,9 +10,11 @@ import { HeaderComponent } from './components/header/header.component';
   ],
   imports: [
     CommonModule,
+    MatProgressSpinnerModule
   ],
   exports: [
-    HeaderComponent
+    HeaderComponent,
+    MatProgressSpinnerModule
   ],
   providers: [
   ]

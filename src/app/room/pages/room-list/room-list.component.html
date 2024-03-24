@@ -1,2 +1,6 @@
-<p>hr</p>
-<p>{{rooms$ | async | json}}</p>
+<mat-spinner *ngIf="loading$ |async"/>
+
+<ng-container *ngIf="!(loading$ | async)">
+  <p>hr</p>
+  <p>{{rooms$ | async | json}}</p>
+</ng-container>

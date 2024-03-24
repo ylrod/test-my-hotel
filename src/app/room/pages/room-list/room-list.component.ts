@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
-import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { Room } from '../../model/room.model';
-import { selectRooms } from '../../state/selectors/room.selectors';
-import { loadRooms } from '../../state/actions/room.actions';
-import { RoomState } from '../../state/room.state';
+import { Select, Store } from '@ngxs/store';
+import { LoadRooms } from '../../state/room.actions';
+import { RoomSelectors } from '../../state/room.selector';
 
 @Component({
   selector: 'app-room-list',
@@ -13,12 +12,12 @@ import { RoomState } from '../../state/room.state';
 })
 export class RoomListComponent {
 
-  public rooms$: Observable<Room[]> | undefined;
+  @Select(RoomSelectors.getRoomsList) rooms$!: Observable<Room[]>;
+  @Select(RoomSelectors.getRoomsLoading) loading$!: Observable<boolean>;
 
-  constructor(private store: Store<RoomState>) { }
+  constructor(private store: Store) { }
 
   ngOnInit(): void {
-    this.rooms$ = this.store.select(selectRooms);
-    this.store.dispatch(loadRooms());
+    this.store.dispatch(new LoadRooms());
   }
 }

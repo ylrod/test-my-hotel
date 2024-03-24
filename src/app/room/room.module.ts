@@ -4,10 +4,8 @@ import { CommonModule } from '@angular/common';
 import { RoomRoutingModule } from './room-routing.module';
 import { RoomListComponent } from './pages/room-list/room-list.component';
 import { SharedModule } from '../shared/shared.module';
-import { StoreModule } from '@ngrx/store';
-import { roomReducer } from './state/reducers/room.reducers';
-import { EffectsModule } from '@ngrx/effects';
-import { RoomEffects } from './state/effects/room.effects';
+import { RoomState } from './state/room.state';
+import { NgxsModule } from '@ngxs/store';
 
 
 @NgModule({
@@ -18,8 +16,7 @@ import { RoomEffects } from './state/effects/room.effects';
     CommonModule,
     RoomRoutingModule,
     SharedModule,
-    StoreModule.forFeature('rooms', roomReducer),
-    EffectsModule.forFeature([RoomEffects])
+    NgxsModule.forFeature([RoomState]),
   ]
 })
 export class RoomModule { }
