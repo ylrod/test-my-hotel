@@ -3,6 +3,9 @@ import { Room } from '../../model/room.model';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
+import { DatePipe } from '@angular/common';
+import tableRoomsFilter from '../../utils/tableRoomsFilter';
+import { TranslationService } from 'src/app/shared/services/translate.service';
 
 @Component({
   selector: 'app-table-rooms',
@@ -19,6 +22,8 @@ export class TableRoomsComponent {
   options = ['Editar', 'Eliminar'];
   selectedRoom!: Room;
 
+  constructor(private _datePipe: DatePipe, private _translateService: TranslationService) { }
+
   ngOnChanges(changes: SimpleChanges) {
     if (changes['rooms']) {
       this.dataSource.data = this.rooms;
@@ -28,6 +33,8 @@ export class TableRoomsComponent {
   ngAfterViewInit() {
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
+    const { _datePipe, _translateService } = this;
+    this.dataSource.filterPredicate = tableRoomsFilter({ _datePipe, _translateService });
   }
 
   onMenuClick(event: MouseEvent, room: Room) {
@@ -37,6 +44,10 @@ export class TableRoomsComponent {
 
   menuOptionClick(option: string) {
     this.onMenuOptionClick.emit({ room: this.selectedRoom, option });
+  }
+
+  onChangesSearchTerm(searchTerm: string) {
+    this.dataSource.filter = searchTerm;
   }
 
 }
