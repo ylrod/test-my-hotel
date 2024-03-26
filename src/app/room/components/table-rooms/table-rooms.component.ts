@@ -3,9 +3,7 @@ import { Room } from '../../model/room.model';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
-import { DatePipe } from '@angular/common';
-import tableRoomsFilter from '../../utils/tableRoomsFilter';
-import { TranslationService } from 'src/app/shared/services/translate.service';
+import { TableRoomService } from '../../services/table-room.service';
 
 @Component({
   selector: 'app-table-rooms',
@@ -21,8 +19,13 @@ export class TableRoomsComponent {
   dataSource = new MatTableDataSource<Room>();
   options = ['Editar', 'Eliminar'];
   selectedRoom!: Room;
+  statusClasses: { [key: string]: string } = {
+    available: 'status__available',
+    occupied: 'status__occupied',
+    cleaning: 'status__cleaning'
+  };
 
-  constructor(private _datePipe: DatePipe, private _translateService: TranslationService) { }
+  constructor(private _tableRoomService: TableRoomService) { }
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes['rooms']) {
@@ -33,8 +36,7 @@ export class TableRoomsComponent {
   ngAfterViewInit() {
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
-    const { _datePipe, _translateService } = this;
-    this.dataSource.filterPredicate = tableRoomsFilter({ _datePipe, _translateService });
+    this.dataSource.filterPredicate = this._tableRoomService.getTableRoomFilter;
   }
 
   onMenuClick(event: MouseEvent, room: Room) {

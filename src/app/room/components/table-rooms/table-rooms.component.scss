@@ -1,0 +1,15 @@
+.status {
+  &__available {
+    background-color: var(--green);
+    color: var(--black);
+  }
+
+  &__occupied {
+    background-color: var(--red);
+    color: var(--white);
+  }
+
+  &__cleaning {
+    background-color: var(--orange);
+  }
+}

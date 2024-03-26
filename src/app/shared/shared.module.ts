@@ -1,5 +1,5 @@
 import { ModuleWithProviders, NgModule } from '@angular/core';
-import { CommonModule, DatePipe } from '@angular/common';
+import { CommonModule, CurrencyPipe, DatePipe } from '@angular/common';
 import { HeaderComponent } from './components/header/header.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatTableModule } from '@angular/material/table';
@@ -64,6 +64,7 @@ export class SharedModule {
       providers: [
         TranslationService,
         DatePipe,
+        CurrencyPipe
       ]
     };
   }

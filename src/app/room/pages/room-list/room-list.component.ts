@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Room } from '../../model/room.model';
 import { Select, Store } from '@ngxs/store';
@@ -17,10 +17,14 @@ export class RoomListComponent {
   public view: string = 'home';
   selectedRoom: Room | null = null;
 
-  constructor(private store: Store) { }
+  constructor(private store: Store, private cd: ChangeDetectorRef) { }
 
   ngOnInit(): void {
     this.store.dispatch(new LoadRooms());
+  }
+
+  ngAfterContentChecked(): void {
+    this.cd.detectChanges();
   }
 
   changeView(view: string) {
