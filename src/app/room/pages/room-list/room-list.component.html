@@ -1,6 +1,19 @@
 <mat-spinner *ngIf="loading$ |async"/>
 
 <ng-container *ngIf="!(loading$ | async)">
-  <p>hr</p>
-  <p>{{rooms$ | async | json}}</p>
+  <app-search-bar (onChanges)="onChangesSearchTerm($event)"></app-search-bar>
+  <app-table-rooms
+    [rooms]="(rooms$ | async | searchMultiple: searchTerm: searchProperties ) || []"
+    (onMenuOptionClick)="onMenuOptionClick($event)">
+  </app-table-rooms>
 </ng-container>
+
+
+<app-dialog
+	*ngIf="view == 'delete'"
+	[type]="'confirmation'"
+	[title]="'Eliminar Habitación'"
+	[message]="'¿Está seguro que quiere eliminar la habitación ' + selectedRoom.number + '?'"
+	(closeModal)="changeView('home')"
+	(confirmModal)="onConfirmDeleteRoom()">
+</app-dialog>

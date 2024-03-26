@@ -6,11 +6,13 @@ import { RoomListComponent } from './pages/room-list/room-list.component';
 import { SharedModule } from '../shared/shared.module';
 import { RoomState } from './state/room.state';
 import { NgxsModule } from '@ngxs/store';
+import { TableRoomsComponent } from './components/table-rooms/table-rooms.component';
 
 
 @NgModule({
   declarations: [
-    RoomListComponent
+    RoomListComponent,
+    TableRoomsComponent
   ],
   imports: [
     CommonModule,

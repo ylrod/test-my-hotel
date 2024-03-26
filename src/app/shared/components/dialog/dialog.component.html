@@ -1,0 +1,14 @@
+<div class="dialog__container" (click)="containerClose()">
+	<div class="dialog__body">
+		<h1>{{ title }}</h1>
+		<p>{{ message }}</p>
+		<ng-content></ng-content>
+		<div class="dialog__actions"  *ngIf="type == 'confirmation'">
+			<button mat-raised-button class="submit small" (click)="confirm()">{{'Confirmar'}}</button>
+			<button mat-raised-button class="cancel small" (click)="close()">{{'Cancelar' }}</button>
+		</div>
+		<div class="dialog__actions" *ngIf="type == 'alert'">
+			<button mat-raised-button class="submit small" (click)="close()">{{'Ok'}}</button>
+		</div>
+	</div>
+</div>

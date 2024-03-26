@@ -9,7 +9,7 @@ import { mockRooms } from 'src/app/shared/mocks/data';
 export class RoomService {
 
   rooms: Room[];
-  timeDelay: number = 1000;
+  timeDelay: number = 300;
 
   constructor() {
     this.rooms = [...mockRooms];
