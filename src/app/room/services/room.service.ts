@@ -17,7 +17,7 @@ export class RoomService {
   }
 
   getRooms(): Observable<Room[]> {
-    return of(this.rooms).pipe(delay(this.timeDelay));;
+    return of([...this.rooms]).pipe(delay(this.timeDelay));;
   }
 
   addRoom(room: Room): Observable<void> {

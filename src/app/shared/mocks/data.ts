@@ -8,7 +8,7 @@ export const mockRooms: Room[] = [
     status: 'available',
     pricePerNight: 100,
     description: 'Habitación individual con cama individual',
-    features: ['TV', 'Aire Acondicionado', 'Mini Bar'],
+    features: ['tv', 'ac', 'minibar'],
     createdAt: '2024-01-02T12:00:00.000Z',
   },
   {
@@ -18,7 +18,7 @@ export const mockRooms: Room[] = [
     status: 'cleaning',
     pricePerNight: 150,
     description: 'Habitación doble con cama matrimonial',
-    features: ['TV', 'Aire Acondicionado', 'Mini Bar'],
+    features: ['tv', 'ac', 'minibar'],
     createdAt: '2024-01-04T12:00:00.000Z',
   },
   {
@@ -28,7 +28,7 @@ export const mockRooms: Room[] = [
     status: 'available',
     pricePerNight: 200,
     description: 'Suite con cama matrimonial tamaño king y jacuzzi',
-    features: ['TV', 'Aire Acondicionado', 'Mini Bar', 'Jacuzzi'],
+    features: ['tv', 'ac', 'minibar', 'jacuzzi'],
     createdAt: '2024-01-01T12:00:00.000Z',
   },
   {
@@ -38,7 +38,7 @@ export const mockRooms: Room[] = [
     status: 'occupied',
     pricePerNight: 100,
     description: 'Habitación individual con cama individual',
-    features: ['TV', 'Aire Acondicionado', 'Mini Bar'],
+    features: ['tv', 'ac', 'minibar'],
     createdAt: '2024-01-01T12:00:00.000Z',
   },
   {
@@ -48,7 +48,7 @@ export const mockRooms: Room[] = [
     status: 'occupied',
     pricePerNight: 90,
     description: 'Habitación individual con cama individual',
-    features: ['TV', 'Aire Acondicionado', 'Mini Bar'],
+    features: ['tv', 'ac', 'minibar'],
     createdAt: '2024-01-02T12:00:00.000Z',
   },
   {
@@ -58,7 +58,7 @@ export const mockRooms: Room[] = [
     status: 'cleaning',
     pricePerNight: 150,
     description: 'Habitación doble con cama matrimonial',
-    features: ['TV', 'Aire Acondicionado', 'Mini Bar'],
+    features: ['tv', 'ac', 'minibar'],
     createdAt: '2024-01-05T12:00:00.000Z',
   },
   {
@@ -68,7 +68,7 @@ export const mockRooms: Room[] = [
     status: 'available',
     pricePerNight: 200,
     description: 'Suite con cama matrimonial tamaño king y jacuzzi',
-    features: ['TV', 'Aire Acondicionado', 'Mini Bar', 'Jacuzzi'],
+    features: ['tv', 'ac', 'minibar', 'jacuzzi'],
     createdAt: '2024-01-07T12:00:00.000Z',
   },
   {
@@ -78,7 +78,7 @@ export const mockRooms: Room[] = [
     status: 'available',
     pricePerNight: 100,
     description: 'Habitación individual con cama individual',
-    features: ['TV', 'Aire Acondicionado', 'Mini Bar'],
+    features: ['tv', 'ac', 'minibar'],
     createdAt: '2024-01-08T12:00:00.000Z',
   },
   {
@@ -88,7 +88,7 @@ export const mockRooms: Room[] = [
     status: 'available',
     pricePerNight: 150,
     description: 'Habitación doble con cama matrimonial',
-    features: ['TV', 'Aire Acondicionado', 'Mini Bar'],
+    features: ['tv', 'ac', 'minibar'],
     createdAt: '2024-01-11T12:00:00.000Z',
   },
   {
@@ -98,7 +98,7 @@ export const mockRooms: Room[] = [
     status: 'available',
     pricePerNight: 200,
     description: 'Suite con cama matrimonial tamaño king y jacuzzi',
-    features: ['TV', 'Aire Acondicionado', 'Mini Bar', 'Jacuzzi'],
+    features: ['tv', 'ac', 'minibar', 'jacuzzi'],
     createdAt: '2024-01-02T12:00:00.000Z',
   },
   {
@@ -108,7 +108,7 @@ export const mockRooms: Room[] = [
     status: 'occupied',
     pricePerNight: 100,
     description: 'Habitación individual con cama individual',
-    features: ['TV', 'Aire Acondicionado', 'Mini Bar'],
+    features: ['tv', 'ac', 'minibar'],
     createdAt: '2024-01-03T12:00:00.000Z',
   },
   {
@@ -118,7 +118,7 @@ export const mockRooms: Room[] = [
     status: 'occupied',
     pricePerNight: 90,
     description: 'Habitación individual con cama individual',
-    features: ['TV', 'Aire Acondicionado', 'Mini Bar'],
+    features: ['tv', 'ac', 'minibar'],
     createdAt: '2024-01-04T12:00:00.000Z',
   },
   {
@@ -128,7 +128,7 @@ export const mockRooms: Room[] = [
     status: 'cleaning',
     pricePerNight: 150,
     description: 'Habitación doble con cama matrimonial',
-    features: ['TV', 'Aire Acondicionado', 'Mini Bar'],
+    features: ['tv', 'ac', 'minibar'],
     createdAt: '2024-01-05T12:00:00.000Z',
   },
   {
@@ -138,7 +138,7 @@ export const mockRooms: Room[] = [
     status: 'available',
     pricePerNight: 200,
     description: 'Suite con cama matrimonial tamaño king y jacuzzi',
-    features: ['TV', 'Aire Acondicionado', 'Mini Bar', 'Jacuzzi'],
+    features: ['tv', 'ac', 'minibar', 'jacuzzi'],
     createdAt: '2024-01-06T12:00:00.000Z',
   },
   {
@@ -148,7 +148,7 @@ export const mockRooms: Room[] = [
     status: 'available',
     pricePerNight: 100,
     description: 'Habitación individual con cama individual',
-    features: ['TV', 'Aire Acondicionado', 'Mini Bar'],
+    features: ['tv', 'ac', 'minibar'],
     createdAt: '2024-01-07T12:00:00.000Z',
   },
   {
@@ -158,7 +158,7 @@ export const mockRooms: Room[] = [
     status: 'available',
     pricePerNight: 150,
     description: 'Habitación doble con cama matrimonial',
-    features: ['TV', 'Aire Acondicionado', 'Mini Bar'],
+    features: ['tv', 'ac', 'minibar'],
     createdAt: '2024-01-08T12:00:00.000Z',
   }
 ]

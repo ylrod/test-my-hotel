@@ -2,8 +2,10 @@ import { ChangeDetectorRef, Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Room } from '../../model/room.model';
 import { Select, Store } from '@ngxs/store';
-import { DeleteRoom, LoadRooms, UpdateRoomStatus } from '../../state/room.actions';
+import { AddRoom, DeleteRoom, LoadRooms, UpdateRoom, UpdateRoomStatus } from '../../state/room.actions';
 import { RoomSelectors } from '../../state/room.selector';
+import { MatDialog } from '@angular/material/dialog';
+import { AddRoomComponent } from '../../components/add-room/add-room.component';
 
 @Component({
   selector: 'app-room-list',
@@ -17,7 +19,10 @@ export class RoomListComponent {
   public view: string = 'home';
   selectedRoom: Room | null = null;
 
-  constructor(private store: Store, private cd: ChangeDetectorRef) { }
+  constructor(
+    private store: Store,
+    private cd: ChangeDetectorRef,
+    public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.store.dispatch(new LoadRooms());
@@ -39,6 +44,7 @@ export class RoomListComponent {
         this.changeView('delete');
         break;
       case 'edit':
+        this.openDialog();
         break;
       case 'occupied':
       case 'available':
@@ -54,5 +60,24 @@ export class RoomListComponent {
       this.selectedRoom = null;
       this.changeView('home');
     }
+  }
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(AddRoomComponent, {
+      data: {
+        room: this.selectedRoom
+      }
+    });
+
+    dialogRef.afterClosed().subscribe((result: Room) => {
+      this.selectedRoom = null;
+      if (!result) return;
+
+      if (result.id) {
+        this.store.dispatch(new UpdateRoom(result));
+      } else {
+        this.store.dispatch(new AddRoom(result));
+      }
+    });
   }
 }

@@ -30,7 +30,7 @@ export class TableRoomService {
 
   private matchesComplexField = (data: Room, normalizedFilter: string) =>
     normalizeString(this._datePipe.transform(data.createdAt, 'M-d-yy, h:mm a')).includes(normalizedFilter) ||
-    normalizeString(data.features.join(', ')).includes(normalizedFilter) ||
+    normalizeString(data?.features?.map((item: string) => this._translateService.translate(item)).join(', ')).includes(normalizedFilter) ||
     normalizeString(this._currencyPipe.transform(data.pricePerNight)).includes(normalizedFilter);
 
   public getTableRoomFilter = (data: Room, filter: string): boolean => {

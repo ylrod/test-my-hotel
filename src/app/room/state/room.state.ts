@@ -1,7 +1,7 @@
 import { Action, Selector, State, StateContext } from "@ngxs/store";
 import { Room } from "../model/room.model";
 import { RoomService } from "../services/room.service";
-import { DeleteRoom, LoadRooms, UpdateRoomStatus } from "./room.actions";
+import { DeleteRoom, LoadRooms, UpdateRoom, UpdateRoomStatus } from "./room.actions";
 import { catchError, tap, throwError } from "rxjs";
 import { Injectable } from "@angular/core";
 
@@ -65,6 +65,20 @@ export class RoomState {
           return room;
         });
         ctx.patchState({ rooms, loading: false });
+      }),
+      catchError(error => {
+        ctx.patchState({ error, loading: false });
+        return throwError(error);
+      })
+    );
+  }
+
+  @Action(UpdateRoom)
+  updateRoom(ctx: StateContext<RoomStateModel>, action: UpdateRoom) {
+    ctx.patchState({ loading: true });
+    return this.roomService.updateRoom(action.room).pipe(
+      tap(() => {
+        ctx.dispatch(new LoadRooms());
       }),
       catchError(error => {
         ctx.patchState({ error, loading: false });

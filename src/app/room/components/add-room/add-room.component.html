@@ -1,0 +1,69 @@
+<section class="dialog">
+  <div class="dialog__body">
+    <h1>{{'Editar'}}</h1>
+    <div class="add-container__form">
+      <form class="form" [formGroup]="form">
+        <div class="form__row">
+          <!-- number -->
+          <mat-form-field class="form__field">
+            <mat-label>Número de habitación</mat-label>
+            <input matInput type="text" formControlName="number" name="number" >
+             <mat-error *ngIf="!form.get('number')?.valid &&
+            (form.get('number')?.touched || form.get('number')?.dirty)" class="form__field--error">
+              Número de habitación no válido
+            </mat-error>
+          </mat-form-field>
+          <!-- pricePerNight -->
+          <mat-form-field class="form__field">
+            <mat-label>Precio</mat-label>
+            <input matInput type="text" formControlName="pricePerNight" name="pricePerNight" >
+             <mat-error *ngIf="!form.get('pricePerNight')?.valid &&
+            (form.get('pricePerNight')?.touched || form.get('pricePerNight')?.dirty)" class="form__field--error">
+              Precio no válido
+            </mat-error>
+          </mat-form-field>
+          <!-- status -->
+          <mat-form-field>
+            <mat-label>Estado</mat-label>
+            <mat-select formControlName="status" name="status" >
+              <ng-container *ngFor="let option of lists.statuses">
+                <mat-option [value]="option">{{option | translate}}</mat-option>
+              </ng-container>
+            </mat-select>
+          </mat-form-field>
+          <!-- description -->
+          <mat-form-field class="form__field">
+            <mat-label>Descripción</mat-label>
+            <textarea matInput formControlName="description" name="description"></textarea>
+             <mat-error *ngIf="!form.get('description')?.valid &&
+            (form.get('description')?.touched || form.get('description')?.dirty)" class="form__field--error">
+              Descripción requerida
+            </mat-error>
+          </mat-form-field>
+          <!-- tipo -->
+          <mat-form-field>
+            <mat-label>Tipo</mat-label>
+            <mat-select formControlName="type" name="type" >
+              <ng-container *ngFor="let option of lists.types">
+                <mat-option [value]="option">{{option | translate}}</mat-option>
+              </ng-container>
+            </mat-select>
+          </mat-form-field>
+          <!-- features -->
+          <mat-form-field>
+            <mat-label>Características</mat-label>
+            <mat-select formControlName="features" name="features" multiple>
+              <ng-container *ngFor="let option of lists.features">
+                <mat-option [value]="option">{{option | translate}}</mat-option>
+              </ng-container>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </form>
+    </div>
+    <div class="dialog__actions">
+      <button mat-raised-button class="submit small" (click)="onSave()">{{'Confirmar'}}</button>
+      <button mat-raised-button class="cancel small" (click)="onClose()">{{'Cancelar' }}</button>
+    </div>
+  </div>
+</section>

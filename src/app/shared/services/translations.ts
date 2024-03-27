@@ -7,7 +7,14 @@ export default {
     'cleaning': 'Cleaning',
     'single': 'Single',
     'double': 'Double',
-    'suite': 'Suite'
+    'suite': 'Suite',
+    'wifi': 'Wifi',
+    'tv': 'TV',
+    'bathroom': 'Bathroom',
+    'balcony': 'Balcony',
+    'minibar': 'Minibar',
+    'ac': 'AC',
+    'jacuzzi': 'Jacuzzi'
   },
   'es': {
     'available': 'Disponible',
@@ -15,6 +22,13 @@ export default {
     'cleaning': 'Limpieza',
     'single': 'Individual',
     'double': 'Doble',
-    'suite': 'Suite'
+    'suite': 'Suite',
+    'wifi': 'Wifi',
+    'tv': 'TV',
+    'bathroom': 'Baño',
+    'balcony': 'Balcón',
+    'minibar': 'Minibar',
+    'ac': 'AC',
+    'jacuzzi': 'Jacuzzi'
   }
 } as Translation;

@@ -1,0 +1,14 @@
+.add-container {
+  background-color: #fff;
+  width: 70vw;
+
+  &__title {
+    padding: 1.5rem;
+    font-weight: bold;
+    font-size: 18px;
+  }
+
+  &__form {
+    padding: 16px;
+  }
+}

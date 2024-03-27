@@ -15,6 +15,8 @@ import { ArrayToStringPipe } from './pipes/array-to-string.pipe';
 import { TranslationService } from './services/translate.service';
 import { TranslatePipe } from './pipes/translate.pipe';
 import { LoaderComponent } from './components/loader/loader.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatSelectModule } from '@angular/material/select';
 
 
 
@@ -36,7 +38,9 @@ import { LoaderComponent } from './components/loader/loader.component';
     MatInputModule,
     MatMenuModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    MatDialogModule,
+    MatSelectModule
   ],
   exports: [
     HeaderComponent,
@@ -52,7 +56,9 @@ import { LoaderComponent } from './components/loader/loader.component';
     MatMenuModule,
     MatIconModule,
     MatButtonModule,
-    LoaderComponent
+    LoaderComponent,
+    MatDialogModule,
+    MatSelectModule
   ],
   providers: [
     ArrayToStringPipe,
