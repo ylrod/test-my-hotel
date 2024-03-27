@@ -7,12 +7,14 @@ import { SharedModule } from '../shared/shared.module';
 import { RoomState } from './state/room.state';
 import { NgxsModule } from '@ngxs/store';
 import { TableRoomsComponent } from './components/table-rooms/table-rooms.component';
+import { MenuTableRoomsComponent } from './components/menu-table-rooms/menu-table-rooms.component';
 
 
 @NgModule({
   declarations: [
     RoomListComponent,
-    TableRoomsComponent
+    TableRoomsComponent,
+    MenuTableRoomsComponent
   ],
   imports: [
     CommonModule,

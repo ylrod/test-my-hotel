@@ -1,7 +1,7 @@
 import { Action, Selector, State, StateContext } from "@ngxs/store";
 import { Room } from "../model/room.model";
 import { RoomService } from "../services/room.service";
-import { DeleteRoom, LoadRooms } from "./room.actions";
+import { DeleteRoom, LoadRooms, UpdateRoomStatus } from "./room.actions";
 import { catchError, tap, throwError } from "rxjs";
 import { Injectable } from "@angular/core";
 
@@ -43,6 +43,27 @@ export class RoomState {
     return this.roomService.deleteRoom(action.id).pipe(
       tap(() => {
         const rooms = ctx.getState().rooms.filter(room => room.id !== action.id);
+        ctx.patchState({ rooms, loading: false });
+      }),
+      catchError(error => {
+        ctx.patchState({ error, loading: false });
+        return throwError(error);
+      })
+    );
+  }
+
+  @Action(UpdateRoomStatus)
+  updateRoomStatus(ctx: StateContext<RoomStateModel>, action: UpdateRoomStatus) {
+    ctx.patchState({ loading: true });
+    const { id, status } = action;
+    return this.roomService.updateRoomStatus({ id, status }).pipe(
+      tap(() => {
+        const rooms = ctx.getState().rooms.map(room => {
+          if (room.id === id) {
+            return { ...room, status };
+          }
+          return room;
+        });
         ctx.patchState({ rooms, loading: false });
       }),
       catchError(error => {

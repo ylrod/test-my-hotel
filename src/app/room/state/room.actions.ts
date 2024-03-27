@@ -1,3 +1,4 @@
+import { RoomStatus } from "../model/room-status.type";
 import { Room } from "../model/room.model";
 
 
@@ -18,4 +19,9 @@ export class UpdateRoom {
 export class DeleteRoom {
   static readonly type = '[Room] Delete Room';
   constructor(public id: number) { }
+}
+
+export class UpdateRoomStatus {
+  static readonly type = '[Room] Update Room Status';
+  constructor(public id: number, public status: RoomStatus) { }
 }

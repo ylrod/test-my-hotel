@@ -1,0 +1,9 @@
+<mat-menu #menu="matMenu" yPosition="below" xPosition="before">
+  <ng-template matMenuContent let-element="element">
+    <button *ngIf="element.status !== 'occupied'" mat-menu-item (click)="menuOptionClick('occupied')">Marcar como ocupada</button>
+    <button *ngIf="element.status !== 'available'" mat-menu-item (click)="menuOptionClick('available')">Marcar como disponible</button>
+    <button *ngIf="element.status !== 'cleaning'" mat-menu-item (click)="menuOptionClick('cleaning')">Marcar como en limpieza</button>
+    <button mat-menu-item (click)="menuOptionClick('edit')">Editar</button>
+    <button mat-menu-item (click)="menuOptionClick('delete')">Eliminar</button>
+  </ng-template>
+</mat-menu>

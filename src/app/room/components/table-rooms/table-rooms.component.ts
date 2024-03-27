@@ -4,6 +4,8 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
 import { TableRoomService } from '../../services/table-room.service';
+import { MenuTableRoomsComponent } from '../menu-table-rooms/menu-table-rooms.component';
+import { MatMenuTrigger } from '@angular/material/menu';
 
 @Component({
   selector: 'app-table-rooms',
@@ -11,13 +13,14 @@ import { TableRoomService } from '../../services/table-room.service';
   styleUrls: ['./table-rooms.component.scss']
 })
 export class TableRoomsComponent {
+  @ViewChild(MenuTableRoomsComponent) menuComponent!: MenuTableRoomsComponent;
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatMenuTrigger) menuTrigger!: MatMenuTrigger;
   @Input() rooms: Room[] = [];
   @Output() onMenuOptionClick = new EventEmitter<{ room: Room, option: string }>();
   displayedColumns: string[] = ['number', 'type', 'status', 'pricePerNight', 'description', 'features', 'createdAt', 'actions'];
   dataSource = new MatTableDataSource<Room>();
-  options = ['Editar', 'Eliminar'];
   selectedRoom!: Room;
   statusClasses: { [key: string]: string } = {
     available: 'status--available',
@@ -45,6 +48,7 @@ export class TableRoomsComponent {
   }
 
   menuOptionClick(option: string) {
+    this.menuTrigger.closeMenu();
     this.onMenuOptionClick.emit({ room: this.selectedRoom, option });
   }
 

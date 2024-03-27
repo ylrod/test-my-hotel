@@ -2,7 +2,7 @@ import { ChangeDetectorRef, Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Room } from '../../model/room.model';
 import { Select, Store } from '@ngxs/store';
-import { DeleteRoom, LoadRooms } from '../../state/room.actions';
+import { DeleteRoom, LoadRooms, UpdateRoomStatus } from '../../state/room.actions';
 import { RoomSelectors } from '../../state/room.selector';
 
 @Component({
@@ -33,10 +33,18 @@ export class RoomListComponent {
 
   onMenuOptionClick(event: { room: Room, option: string }) {
     this.selectedRoom = event.room;
-    if (event.option === 'Eliminar') {
-      this.changeView('delete');
-    } else if (event.option === 'Editar') {
-      // Implementar lógica para editar una habitación
+
+    switch (event.option) {
+      case 'delete':
+        this.changeView('delete');
+        break;
+      case 'edit':
+        break;
+      case 'occupied':
+      case 'available':
+      case 'cleaning':
+        this.store.dispatch(new UpdateRoomStatus(this.selectedRoom.id, event.option));
+        break;
     }
   }
 
