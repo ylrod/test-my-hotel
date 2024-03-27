@@ -1,6 +1,6 @@
-<mat-spinner *ngIf="loading$ |async"/>
+<app-loader *ngIf="loading$ | async"></app-loader>
 
-<ng-container *ngIf="!(loading$ | async)">
+<div class="h-full" [hidden]="(loading$ | async)">
   <app-table-rooms
     [rooms]="(rooms$ | async ) || []"
     (onMenuOptionClick)="onMenuOptionClick($event)">
@@ -14,5 +14,5 @@
     (closeModal)="changeView('home')"
     (confirmModal)="onConfirmDeleteRoom()">
   </app-dialog>
-</ng-container>
+</div>
 

@@ -15,14 +15,14 @@ export class TableRoomsComponent {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @Input() rooms: Room[] = [];
   @Output() onMenuOptionClick = new EventEmitter<{ room: Room, option: string }>();
-  displayedColumns: string[] = ['id', 'number', 'type', 'status', 'pricePerNight', 'description', 'features', 'createdAt', 'actions'];
+  displayedColumns: string[] = ['number', 'type', 'status', 'pricePerNight', 'description', 'features', 'createdAt', 'actions'];
   dataSource = new MatTableDataSource<Room>();
   options = ['Editar', 'Eliminar'];
   selectedRoom!: Room;
   statusClasses: { [key: string]: string } = {
-    available: 'status__available',
-    occupied: 'status__occupied',
-    cleaning: 'status__cleaning'
+    available: 'status--available',
+    occupied: 'status--occupied',
+    cleaning: 'status--cleaning'
   };
 
   constructor(private _tableRoomService: TableRoomService) { }

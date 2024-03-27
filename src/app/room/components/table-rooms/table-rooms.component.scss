@@ -1,15 +1,32 @@
-.status {
-  &__available {
-    background-color: var(--green);
-    color: var(--black);
+.mat-paginator-sticky {
+  bottom: 0px;
+  left: 0px;
+  position: sticky;
+  z-index: 10;
+}
+
+.mat-column {
+  &-actions {
+    width: 100px;
   }
 
-  &__occupied {
-    background-color: var(--red);
-    color: var(--white);
+  &-description {
+    min-width: 200px;
   }
 
-  &__cleaning {
-    background-color: var(--orange);
+  &-status {
+    width: 105px;
+  }
+
+  &-type {
+    width: 105px;
+  }
+
+  &-price {
+    width: 105px;
+  }
+
+  &-number {
+    width: 105px;
   }
 }

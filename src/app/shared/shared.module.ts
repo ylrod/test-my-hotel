@@ -14,6 +14,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { ArrayToStringPipe } from './pipes/array-to-string.pipe';
 import { TranslationService } from './services/translate.service';
 import { TranslatePipe } from './pipes/translate.pipe';
+import { LoaderComponent } from './components/loader/loader.component';
 
 
 
@@ -23,7 +24,8 @@ import { TranslatePipe } from './pipes/translate.pipe';
     SearchBarComponent,
     ArrayToStringPipe,
     TranslatePipe,
-    DialogComponent
+    DialogComponent,
+    LoaderComponent
   ],
   imports: [
     CommonModule,
@@ -49,7 +51,8 @@ import { TranslatePipe } from './pipes/translate.pipe';
     MatInputModule,
     MatMenuModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    LoaderComponent
   ],
   providers: [
     ArrayToStringPipe,

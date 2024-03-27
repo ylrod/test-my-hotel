@@ -15,7 +15,7 @@ export const mockRooms: Room[] = [
     id: 2,
     number: 102,
     type: 'double',
-    status: 'available',
+    status: 'cleaning',
     pricePerNight: 150,
     description: 'Habitación doble con cama matrimonial',
     features: ['TV', 'Aire Acondicionado', 'Mini Bar'],

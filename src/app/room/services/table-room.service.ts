@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, delay, of } from 'rxjs';
 import { Room } from '../model/room.model';
-import { mockRooms } from 'src/app/shared/mocks/data';
 import { CurrencyPipe, DatePipe } from '@angular/common';
 import { TranslationService } from 'src/app/shared/services/translate.service';
 import normalizeString from 'src/app/shared/utils/normalizeString';
@@ -11,7 +9,7 @@ import normalizeString from 'src/app/shared/utils/normalizeString';
 })
 export class TableRoomService {
 
-  private simpleFields = ['number', 'description', 'id'];
+  private simpleFields = ['number', 'description'];
   private translationFields = ['type', 'status'];
 
   constructor(private _datePipe: DatePipe,
