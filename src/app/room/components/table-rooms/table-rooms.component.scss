@@ -30,3 +30,9 @@
     width: 105px;
   }
 }
+
+.sticky-right {
+  position: sticky;
+  right: 0;
+  z-index: 1;
+}

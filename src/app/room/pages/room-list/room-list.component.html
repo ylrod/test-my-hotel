@@ -1,18 +1,25 @@
+<app-dialog
+  *ngIf="view == 'delete'"
+  [type]="'confirmation'"
+  [title]="'Eliminar Habitación'"
+  [message]="'¿Está seguro que quiere eliminar la habitación ' + selectedRoom?.number + '?'"
+  (closeModal)="changeView('home'); selectedRoom = null"
+  (confirmModal)="onConfirmDeleteRoom()">
+</app-dialog>
+
 <app-loader *ngIf="loading$ | async"></app-loader>
 
-<div class="h-full" [hidden]="(loading$ | async)">
-  <app-table-rooms
-    [rooms]="(rooms$ | async ) || []"
-    (onMenuOptionClick)="onMenuOptionClick($event)">
-  </app-table-rooms>
-
-  <app-dialog
-    *ngIf="view == 'delete'"
-    [type]="'confirmation'"
-    [title]="'Eliminar Habitación'"
-    [message]="'¿Está seguro que quiere eliminar la habitación ' + selectedRoom?.number + '?'"
-    (closeModal)="changeView('home')"
-    (confirmModal)="onConfirmDeleteRoom()">
-  </app-dialog>
+<div class="h-full flex flex-col" [hidden]="(loading$ | async)">
+  <div class="flex items-center justify-between p-4">
+    <app-search-bar (onChanges)="onChangesSearchTerm($event)"></app-search-bar>
+    <button mat-raised-button class="submit small" (click)="openDialog()">{{'Añadir'}}</button>
+  </div>
+  <div class="grow overflow-auto" >
+    <app-table-rooms
+      [rooms]="(rooms$ | async ) || []"
+      [searchTerm]="searchTerm"
+      (onMenuOptionClick)="onMenuOptionClick($event)">
+    </app-table-rooms>
+  </div>
 </div>
 

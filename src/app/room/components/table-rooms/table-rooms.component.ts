@@ -18,6 +18,7 @@ export class TableRoomsComponent {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatMenuTrigger) menuTrigger!: MatMenuTrigger;
   @Input() rooms: Room[] = [];
+  @Input() searchTerm: string = '';
   @Output() onMenuOptionClick = new EventEmitter<{ room: Room, option: string }>();
   displayedColumns: string[] = ['number', 'type', 'status', 'pricePerNight', 'description', 'features', 'createdAt', 'actions'];
   dataSource = new MatTableDataSource<Room>();
@@ -33,6 +34,9 @@ export class TableRoomsComponent {
   ngOnChanges(changes: SimpleChanges) {
     if (changes['rooms']) {
       this.dataSource.data = this.rooms;
+    }
+    if (changes['searchTerm']) {
+      this.dataSource.filter = this.searchTerm;
     }
   };
 
@@ -50,10 +54,6 @@ export class TableRoomsComponent {
   menuOptionClick(option: string) {
     this.menuTrigger.closeMenu();
     this.onMenuOptionClick.emit({ room: this.selectedRoom, option });
-  }
-
-  onChangesSearchTerm(searchTerm: string) {
-    this.dataSource.filter = searchTerm;
   }
 
 }

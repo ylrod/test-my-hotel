@@ -43,12 +43,12 @@ export class AddRoomComponent {
 
   initFormFields() {
     this.form = this.fb.group({
-      'id': [null, { validators: [Validators.required] }],
+      'id': [null],
       'number': [null, { validators: [Validators.required] }],
       'type': [null, { validators: [Validators.required] }],
       'status': [null, { validators: [Validators.required] }],
       'pricePerNight': [null, { validators: [Validators.required] }],
-      'description': [null, { validators: [Validators.required] }],
+      'description': [null],
       'features': [[]],
       'createdAt': [null]
     });
@@ -56,7 +56,6 @@ export class AddRoomComponent {
 
   fillForm() {
     this.form.patchValue({ ...this.data.room });
-    this.form.get('id')?.disable();
     this.form.updateValueAndValidity();
   }
 

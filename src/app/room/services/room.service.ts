@@ -10,7 +10,7 @@ import { RoomStatus } from '../model/room-status.type';
 export class RoomService {
 
   rooms: Room[];
-  timeDelay: number = 300;
+  timeDelay: number = 350;
 
   constructor() {
     this.rooms = [...mockRooms];

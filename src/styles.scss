@@ -54,7 +54,7 @@ body {
   }
 
   &__body {
-    width: 400px;
+    max-width: 400px;
     background: var(--background);
     padding: 20px;
     padding-bottom: 30px;

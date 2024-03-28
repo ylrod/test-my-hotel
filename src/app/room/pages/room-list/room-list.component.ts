@@ -18,6 +18,7 @@ export class RoomListComponent {
   @Select(RoomSelectors.getRoomsLoading) loading$!: Observable<boolean>;
   public view: string = 'home';
   selectedRoom: Room | null = null;
+  searchTerm: string = '';
 
   constructor(
     private store: Store,
@@ -36,9 +37,12 @@ export class RoomListComponent {
     this.view = view;
   }
 
+  onChangesSearchTerm(searchTerm: string) {
+    this.searchTerm = searchTerm;
+  }
+
   onMenuOptionClick(event: { room: Room, option: string }) {
     this.selectedRoom = event.room;
-
     switch (event.option) {
       case 'delete':
         this.changeView('delete');
@@ -50,6 +54,7 @@ export class RoomListComponent {
       case 'available':
       case 'cleaning':
         this.store.dispatch(new UpdateRoomStatus(this.selectedRoom.id, event.option));
+        this.selectedRoom = null;
         break;
     }
   }
