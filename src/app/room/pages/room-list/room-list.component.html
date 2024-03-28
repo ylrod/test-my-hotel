@@ -12,7 +12,7 @@
 <div class="h-full flex flex-col" [hidden]="(loading$ | async)">
   <div class="flex items-center justify-between p-4">
     <app-search-bar (onChanges)="onChangesSearchTerm($event)"></app-search-bar>
-    <button mat-raised-button class="submit small" (click)="openDialog()">{{'Añadir'}}</button>
+    <button mat-raised-button (click)="openDialog()">{{'Añadir'}}</button>
   </div>
   <div class="grow overflow-auto" >
     <app-table-rooms
